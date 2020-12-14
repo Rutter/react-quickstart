@@ -4,7 +4,7 @@ import { useRutterLink } from 'react-rutter-link'
 
 export default function Home() {
   const config = {
-    publicKey: "DSFJKLF",
+    publicKey: "YOUR_RUTTER_PUBLIC_KEY",
     onSuccess: () => {
       console.log("SUCCESS")
     }

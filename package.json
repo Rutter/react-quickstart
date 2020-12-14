@@ -12,6 +12,6 @@
     "next": "10.0.3",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "react-rutter-link": "^1.0.0"
+    "react-rutter-link": "^1.0.1"
   }
 }

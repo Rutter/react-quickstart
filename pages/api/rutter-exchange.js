@@ -23,7 +23,6 @@ export default async (req, res) => {
         data: { access_token },
       } = response;
       // Respond with the access-token
-      console.log(access_token);
       res.statusCode = 200;
       res.json({
         accessToken: access_token,

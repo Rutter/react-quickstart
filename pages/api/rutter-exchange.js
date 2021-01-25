@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const ENV_URL = "sandbox.rutterapi.com";
-const CLIENT_ID = "RUTTER_CLIENT_ID";
-const SECRET = "RUTTER_SECRET";
+const ENV_URL = process.env.RUTTER_URL || "sandbox.rutterapi.com";
+const CLIENT_ID = process.env.RUTTER_CLIENT_ID || "RUTTER_CLIENT_ID";
+const SECRET = process.env.RUTTER_SECRET || "RUTTER_SECRET";
 
 // handles exchanging the token and calling a sample API route
 export default async (req, res) => {
@@ -22,22 +22,11 @@ export default async (req, res) => {
       const {
         data: { access_token },
       } = response;
-      // In the sandbox, Rutter has data available immediately.
-      // In production, you might get a CONNECTION_NOT_READY error if you try to access data immediately
-      const dataResponse = await axios.get(`https://${ENV_URL}/orders`, {
-        params: {
-          access_token,
-          limit: 10,
-        },
-        auth: {
-          username: CLIENT_ID,
-          password: SECRET,
-        },
-      });
-      const { data } = dataResponse;
+      // Respond with the access-token
+      console.log(access_token);
       res.statusCode = 200;
       res.json({
-        ...data,
+        accessToken: access_token,
       });
     } catch (e) {
       console.error(e);
